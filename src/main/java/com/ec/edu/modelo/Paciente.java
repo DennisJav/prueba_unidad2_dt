@@ -7,9 +7,12 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -17,6 +20,8 @@ import javax.persistence.Table;
 public class Paciente {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_paciente")
+	@SequenceGenerator(name = "seq_paciente", sequenceName = "seq_paciente", allocationSize = 1)
 	@Column(name = "paci_id")
 	private Integer id;
 	@Column(name = "paci_cedula")
@@ -38,7 +43,7 @@ public class Paciente {
 	
 	//Relacion: 
 	@OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL)
-	private List<CitaMedica> citaMedica;
+	private List<CitaMedica> citas;
 
 	
 	
@@ -116,13 +121,14 @@ public class Paciente {
 		this.genero = genero;
 	}
 
-	public List<CitaMedica> getCitaMedica() {
-		return citaMedica;
+	public List<CitaMedica> getCitas() {
+		return citas;
 	}
 
-	public void setCitaMedica(List<CitaMedica> citaMedica) {
-		this.citaMedica = citaMedica;
+	public void setCitas(List<CitaMedica> citas) {
+		this.citas = citas;
 	}
+
 	
 	
 	

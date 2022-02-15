@@ -35,6 +35,12 @@ public class PacienteServiceImpl implements IPacienteService{
 		// TODO Auto-generated method stub
 		this.pacienteRepo.elimianrPaciente(id);
 	}
+
+	@Override
+	public Paciente busPacienteCodigo(String codigo) {
+		// TODO Auto-generated method stub
+		return this.pacienteRepo.buscarPacienteCodigo(codigo);
+	}
 	
 	
 }

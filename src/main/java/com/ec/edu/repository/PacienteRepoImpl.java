@@ -2,6 +2,7 @@ package com.ec.edu.repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.slf4j.Logger;
@@ -47,6 +48,15 @@ public class PacienteRepoImpl implements IPacienteRepo{
 	public void elimianrPaciente(Integer id) {
 		Paciente pacienteBorrar = this.buscarPaciente(id);
 		this.entityManager.remove(pacienteBorrar);
+	}
+
+
+	@Override
+	public Paciente buscarPacienteCodigo(String codigoSeguro) {
+		TypedQuery<Paciente> typedQuery = this.entityManager.createQuery("SELECT p FROM Paciente p where p.codigoSeguro =: valor", Paciente.class);
+		typedQuery.setParameter("valor", codigoSeguro);
+
+		return typedQuery.getSingleResult();
 	}
 	
 	

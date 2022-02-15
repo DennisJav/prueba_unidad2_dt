@@ -31,5 +31,18 @@ public class CitaMedicaRepoImpl implements ICitaMedicaRepo{
 		this.EntityManager.merge(citaMedica);
 	}
 
+	@Override
+	public CitaMedica buscarCitaMedica(Integer id) {
+		
+		return this.EntityManager.find(CitaMedica.class, id);
+	}
+
+	@Override
+	public void borrarCita(Integer id) {
+		// TODO Auto-generated method stub
+		CitaMedica cita = this.buscarCitaMedica(id);
+		this.EntityManager.remove(cita);
+	}
+
 	
 }
