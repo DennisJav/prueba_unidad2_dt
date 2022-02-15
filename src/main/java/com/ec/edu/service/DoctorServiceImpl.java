@@ -31,6 +31,12 @@ public class DoctorServiceImpl implements IDoctorService{
 	public void borrarDoctor(Integer id) {
 		this.doctorRepo.borrarDoctor(id);
 	}
+
+	@Override
+	public Doctor buscarDoctorApellido(String apellido) {
+		// TODO Auto-generated method stub
+		return this.doctorRepo.buscarDoctorApellido(apellido);
+	}
 	
 	
 	
