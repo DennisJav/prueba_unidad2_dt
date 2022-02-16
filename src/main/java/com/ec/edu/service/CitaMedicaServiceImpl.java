@@ -16,64 +16,34 @@ import com.ec.edu.repository.ICitaMedicaRepo;
 public class CitaMedicaServiceImpl implements ICitaMedicaService{
 
 	static final Logger LOG = Logger.getLogger(CitaMedicaServiceImpl.class);
-	
+
 	@Autowired
 	private ICitaMedicaRepo citaMedicaRepo;
-	@Autowired
-	private IDoctorService doctorService;
-	@Autowired
-	private IPacienteService pacienteService;
-
-	@Override
-	public void agendarCitaMedica(String Número, LocalDateTime fechaCita, BigDecimal valorCita, String lugarCita,
-			String apellidoDoctor, String codigoSeguroPaciente) {
-	
-		Doctor doctor = this.doctorService.buscarDoctorApellido(apellidoDoctor);
-		Paciente paciente = this.pacienteService.busPacienteCodigo(codigoSeguroPaciente);
-
-		CitaMedica citaMedica = new CitaMedica();
-		
-		citaMedica.setNumero(Número);
-		citaMedica.setFechaCita(fechaCita);
-		citaMedica.setLugar(lugarCita);
-		citaMedica.setDoctor(doctor);
-		citaMedica.setPaciente(paciente);
-		
-		LocalDateTime fechaActual = LocalDateTime.now();
-
-		if (fechaCita.isAfter(fechaActual)) {
-			
-			BigDecimal temp = valorCita.multiply(new BigDecimal(0.12));
-			citaMedica.setValorCita(valorCita.add(temp));
-			
-			this.citaMedicaRepo.agendarCita(citaMedica);
-			LOG.info("Se ha agendado una cita");
-		} else {
-			LOG.warn("No se pudo agendar la cita");
-		}
-
-		
-		
-		
-	}
-
 	@Override
 	public void actualizarCitaMedica(CitaMedica citaMedica) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public void reportarCitaMedica(CitaMedica citaMedica) {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 	@Override
-	public void eliminarCitaMedica(Integer id) {
+	public void insertar(CitaMedica citaMedica) {
 		// TODO Auto-generated method stub
-		
+		this.citaMedicaRepo.agendarCita(citaMedica);
 	}
+
+
+
+	@Override
+	public CitaMedica buscarPorNumero(String numero) {
+		// TODO Auto-generated method stub
+		return this.citaMedicaRepo.buscarCitaMedicaNumero(numero);
+	}
+
+
+
+	
 
 
 	

@@ -7,8 +7,8 @@ import com.ec.edu.modelo.CitaMedica;
 
 public interface ICitaMedicaService {
 	
-	void agendarCitaMedica(String Número, LocalDateTime fechaCita, BigDecimal valorCita, String lugarCita, String apellidoDoctor, String codigoSeguroPaciente);
+	void insertar(CitaMedica citaMedica);
 	void actualizarCitaMedica(CitaMedica citaMedica);
-	void reportarCitaMedica(CitaMedica citaMedica);
-	void eliminarCitaMedica(Integer id);
+	CitaMedica buscarPorNumero(String numero);
+	
 }

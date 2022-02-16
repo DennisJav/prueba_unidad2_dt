@@ -20,6 +20,7 @@ import com.ec.edu.repository.IDoctorRepo;
 import com.ec.edu.service.CitaMedicaServiceImpl;
 import com.ec.edu.service.ICitaMedicaService;
 import com.ec.edu.service.IDoctorService;
+import com.ec.edu.service.IGestorCitaService;
 import com.ec.edu.service.IPacienteService;
 
 @SpringBootApplication
@@ -34,7 +35,9 @@ public class PruebaUnidad2DtApplication implements CommandLineRunner{
 	@Autowired
 	private IPacienteService pacienteService;
 	@Autowired
-	private ICitaMedicaService citICitaMedicaService;
+	private ICitaMedicaService citaMedicaService;
+	@Autowired
+	private IGestorCitaService gestorService;
 	
 	
 	public static void main(String[] args) {
@@ -45,8 +48,8 @@ public class PruebaUnidad2DtApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 		
-//		
-//		//CREAMOS 2 DOCTORES
+		
+		//CREAMOS 2 DOCTORES
 //		
 //		Doctor doc1 = new Doctor();
 //				
@@ -110,7 +113,7 @@ public class PruebaUnidad2DtApplication implements CommandLineRunner{
 //		
 		//Actualizaciones
 		
-//		//Paciente
+////		//Paciente
 //		Paciente pacienteActualizar = new Paciente();
 //		pacienteActualizar.setId(1);
 //		pacienteActualizar.setNombre("Maria");
@@ -122,7 +125,7 @@ public class PruebaUnidad2DtApplication implements CommandLineRunner{
 //		pacienteActualizar.setFechaNacimiento(miFecha5);
 //		pacienteActualizar.setPeso(new BigDecimal(59));
 //		this.pacienteService.actualizarPaciente(pacienteActualizar);
-//		
+////		
 //		//Doctor
 //		
 //		Doctor docActualizar = new Doctor();
@@ -132,10 +135,14 @@ public class PruebaUnidad2DtApplication implements CommandLineRunner{
 //		this.doctorService.actualizarDoctor(docActualizar);
 //		
 		
-
-		//cita medica agendar por numero cita, fecha cita, valor cita, lugar cita, apellido doctor, codigo seguro paciente
-		LocalDateTime fechaAgenda = LocalDateTime.of(2022, Month.APRIL, 18, 13, 00);
-		this.citICitaMedicaService.agendarCitaMedica("12", fechaAgenda, new BigDecimal(12), "Calderon", "tapia", "AE22");
+//
+//		//cita medica agendar por numero cita, fecha cita, valor cita, lugar cita, apellido doctor, codigo seguro paciente
+//		LocalDateTime fechaAgenda = LocalDateTime.of(2022, Month.APRIL, 18, 13, 00);
+//		this.gestorService.agendarCitaMedica("13", fechaAgenda, new BigDecimal(12), "Calderon", "tapia", "AE22");
+		
+		
+		LocalDateTime fechaA = LocalDateTime.of(2022, Month.APRIL, 18, 13, 00);
+		this.gestorService.resultadoCita("13","Gripe" , "Paracetamol", fechaA);
 		
 		
 	}
