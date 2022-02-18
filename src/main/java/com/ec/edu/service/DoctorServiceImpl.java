@@ -33,9 +33,9 @@ public class DoctorServiceImpl implements IDoctorService{
 	}
 
 	@Override
-	public Doctor buscarDoctorApellido(String apellido) {
+	public Doctor buscarDoctorCedula(String cedula) {
 		// TODO Auto-generated method stub
-		return this.doctorRepo.buscarDoctorApellido(apellido);
+		return this.doctorRepo.buscarDoctorCedula(cedula);
 	}
 	
 	

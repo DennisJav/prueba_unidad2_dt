@@ -26,16 +26,18 @@ public class CitaMedicaRepoImpl implements ICitaMedicaRepo{
 	public void agendarCita(CitaMedica citaMedica) {
 		// TODO Auto-generated method stub
 		this.EntityManager.persist(citaMedica);
+		LOG.debug("Guardando la cita medica");
 	}
 
 	@Override
 	public void actualizarCita(CitaMedica citaMedica) {
 		this.EntityManager.merge(citaMedica);
+		LOG.debug("Actualizando la cita medica");
 	}
 
 	@Override
 	public CitaMedica buscarCitaMedica(Integer id) {
-		
+		LOG.debug("Buscando la cita medica");
 		return this.EntityManager.find(CitaMedica.class, id);
 	}
 
@@ -43,6 +45,7 @@ public class CitaMedicaRepoImpl implements ICitaMedicaRepo{
 	public void borrarCita(Integer id) {
 		// TODO Auto-generated method stub
 		CitaMedica cita = this.buscarCitaMedica(id);
+		LOG.debug("Eliminadndo la cita medica: "+id);
 		this.EntityManager.remove(cita);
 	}
 

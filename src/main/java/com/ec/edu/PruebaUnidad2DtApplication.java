@@ -16,6 +16,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.ec.edu.modelo.CitaMedica;
 import com.ec.edu.modelo.Doctor;
 import com.ec.edu.modelo.Paciente;
+import com.ec.edu.modelo.ReporteTO;
 import com.ec.edu.repository.IDoctorRepo;
 import com.ec.edu.service.CitaMedicaServiceImpl;
 import com.ec.edu.service.ICitaMedicaService;
@@ -38,6 +39,7 @@ public class PruebaUnidad2DtApplication implements CommandLineRunner{
 	private ICitaMedicaService citaMedicaService;
 	@Autowired
 	private IGestorCitaService gestorService;
+	
 	
 	
 	public static void main(String[] args) {
@@ -144,6 +146,13 @@ public class PruebaUnidad2DtApplication implements CommandLineRunner{
 		LocalDateTime fechaA = LocalDateTime.of(2022, Month.APRIL, 18, 13, 00);
 		this.gestorService.resultadoCita("13","Gripe" , "Paracetamol", fechaA);
 		
+		
+		LocalDateTime fechaB = LocalDateTime.of(1999, Month.JANUARY,16,01,2);
+		List<ReporteTO> resu1 = this.pacienteService.reporteSencillo(fechaB, "M");
+		LOG.debug("Pacientes con fecha de nacimeinto mayor a: "+fechaB+" de genero: "+"Masculino son : "+resu1.size());
+		for(ReporteTO r:resu1) {
+	    	LOG.info(r.toString());
+	    } 
 		
 	}
 

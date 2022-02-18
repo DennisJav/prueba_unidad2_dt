@@ -27,10 +27,10 @@ public class GestorCitaServiceImpl implements IGestorCitaService {
 
 	@Override
 	public void agendarCitaMedica(String Número, LocalDateTime fechaCita, BigDecimal valorCita, String lugarCita,
-			String apellidoDoctor, String codigoSeguroPaciente) {
+			String cedulaDoctor, String codigoSeguroPaciente) {
 
 		
-		Doctor doctor = this.doctorService.buscarDoctorApellido(apellidoDoctor);
+		Doctor doctor = this.doctorService.buscarDoctorCedula(cedulaDoctor);
 		Paciente paciente = this.pacienteService.busPacienteCodigo(codigoSeguroPaciente);
 
 		CitaMedica citaMedica = new CitaMedica();

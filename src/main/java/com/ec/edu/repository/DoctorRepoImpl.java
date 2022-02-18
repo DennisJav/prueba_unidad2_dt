@@ -25,18 +25,21 @@ public class DoctorRepoImpl implements IDoctorRepo{
 	@Override
 	public void insertarDoctor(Doctor doctor) {
 		this.entityManager.persist(doctor);
+		LOG.debug("Guardando la doctor");
 	}
 
 
 	@Override
 	public void actualizarDoctor(Doctor doctor) {
 		this.entityManager.merge(doctor);
+		LOG.debug("ACTUALIZANDO DOCTOR");
 	}
 
 
 	@Override
 	public Doctor buscarDoctor(Integer id) {
 		// TODO Auto-generated method stub
+		LOG.debug("BUSCANDO DOCTOR");
 		return this.entityManager.find(Doctor.class, id);
 	}
 
@@ -45,16 +48,19 @@ public class DoctorRepoImpl implements IDoctorRepo{
 	public void borrarDoctor(Integer id) {
 		Doctor doctorBorrar = this.buscarDoctor(id);
 		this.entityManager.remove(doctorBorrar);
+		LOG.debug("DOCTOR BORRADO");
 	}
 
 
 	@Override
-	public Doctor buscarDoctorApellido(String apellido) {
+	public Doctor buscarDoctorCedula(String cedula) {
 		
-		TypedQuery<Doctor> typedQuery = this.entityManager.createQuery("SELECT d FROM Doctor d where d.apellido =: valor", Doctor.class);
-		typedQuery.setParameter("valor", apellido);
-
-		return typedQuery.getSingleResult();	
+		TypedQuery<Doctor> typedQuery = this.entityManager.createQuery("SELECT d FROM Doctor d where d.cedula =: valor", Doctor.class);
+		typedQuery.setParameter("valor", cedula);
+		LOG.debug("BUSCANDO DOCTOR POR CEDULA");
+		
+		return typedQuery.getSingleResult();
+		
 		
 	
 	}
