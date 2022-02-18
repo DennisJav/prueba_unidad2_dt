@@ -38,6 +38,10 @@ public class CitaMedica {
 	private String receta;
 	@Column(name = "cime_fecha_proxima_cita")
 	private LocalDateTime fechaProximaCita;
+	@Column(name="cime_diagnostico")
+	private String diagnostico;
+	
+
 	
 	@ManyToOne
 	@JoinColumn(name = "paci_id")
@@ -51,6 +55,12 @@ public class CitaMedica {
 	
 	//metodos set y get
 	
+	public String getDiagnostico() {
+		return diagnostico;
+	}
+	public void setDiagnostico(String diagnostico) {
+		this.diagnostico = diagnostico;
+	}
 	public Paciente getPaciente() {
 		return paciente;
 	}
